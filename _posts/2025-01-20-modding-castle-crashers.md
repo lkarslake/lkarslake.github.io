@@ -116,6 +116,7 @@ function f_Damage(zone, damage_pow, damage_type, damage_flags, recoil_x, recoil_
       {
          if(zone.hitby.human | zone.hitby.owner.human)
          {
+            total_hits = total_hits + 1;
             if(total_hits % active_players == 0)
             {
                for (var i = 1; i <= active_players; i++) 
@@ -139,6 +140,6 @@ function f_PlayerArray()
 ```
 With these changes made, I saved the file. The next step was to use the Ethteck's Decryption Script to encrypt the MAIN.swf back into the main.pak file. To do this, I located the directory in which I unpacked the script in my terminal. Then I ran the following command.
 ```bash
-$ python3 decrypt_asset.py --encrypt /path/to/MAIN.swf output
+python3 decrypt_asset.py --encrypt /path/to/MAIN.swf output
 ```
 This generated the main.pak into a folder named output in the same directory. All that was left to do was to install the mod by replacing the main.pak in the game directory "\Steam\steamapps\common\CastleCrashers\data\game"  with the main.pak generated.
